@@ -12,9 +12,16 @@ tags: 杂谈
 
 ---
 
+<br/>
+<br/>
+
+<img src="./2024_9_24_3_cnblogs的GitHub同步markdown文件的blog如何识别文章的唯一性（身份ID如何判定）.assets/截图20240924145645.png" style="zoom:60%;" />
 
 <br/>
+
 <br/>
+
+
 
 本篇blog是写在GitHub的对应的仓库中的。
 
@@ -31,6 +38,7 @@ https://cnblogs.com/xyz
 
 当仓库中的markdown文件有更新时，cnblogs会自动同步到个人blog地址，但是，如果markdown文件没有更新，cnblogs不会同步。这时候的更新就是在对仓库内容进行推送的时候发生的，在推送动作发生时github会触发cnblogs的同步动作，将docs文件夹下新创建的文件(.md)同步到cnblogs中，并将docs文件夹下删除的文件(.md)进行对应的操作；其中，对新增文件和删除文件的判断是根据git push时的commit信息来判断的，即commit信息中包含新增或删除的文件名。
 
+<br/>
 
 <br/>
 
@@ -44,14 +52,20 @@ https://cnblogs.com/xyz
 
 从而可以看出使用GitHub同步blogs的这种方式对于修改markdown文件名的支持是很不好的，如果你真的对markdown文件名进行修改，那么建议你先手动删除掉cnblogs中对应的文章，然后再对GitHub中的markdown文件进行修改，最后再对GitHub进行同步，这样cnblogs中才会将将你修改文件名后的文件以正确的blog形式进行发布。
 
-从上面的分析可以看出，重命名后的markdown文件会导致cnblogs无法从GitHub上正确同步，这样的情况也会在你发表的blog被判定为不可见的情况。
 
 
+<img src="./2024_9_24_3_cnblogs的GitHub同步markdown文件的blog如何识别文章的唯一性（身份ID如何判定）.assets/截图20240924145855.png" style="zoom:60%;" />
 
+<br/>
 
+为了更好的解决重命名markdown文件并且还没有修改对应的markdown文件中的title的话，那么我们最好是在进行同步设置时指定markdown文件删除动作对应删除blog的操作（误操作和取消发布都无法保证一致性），这样就可以保证一致性了。
 
+<br/>
 
+从上面的分析可以看出，重命名后的markdown文件会导致cnblogs无法从GitHub上正确同步，这样的情况也会在你发表的blog被判定为不可见的情况。如果你在GitHub中的markdown文件同步到blogs上后被cnblogs判断为违规而可见权限变为不可见，那么在不修改GitHub中对应markdown文件名的情况下（也就是说不删除这个对应的markdown文件的情况下），那么所有对GitHub中的对应的该blog的markdown文件的所有更改均无法同步到cnblogs上的对应blog。换句话说，如果你的markdown文件对应的blog被判为违规，那么在此之后的所有对markdown文件的修改都不会被同步到cnblogs上。
 
+<br/>
+<br/>
 
 
 
