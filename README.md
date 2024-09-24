@@ -18,10 +18,13 @@ cnblogs-github-sync是一个将GitHub仓库中的markdown格式的.md文件同�
 
 docs文件夹保存.md格式的markdown文件；
 
-img文件夹保存markdown文件对应的本地保存的图片文件；
+.assets文件夹保存markdown文件对应的本地保存的图片文件；
+
+shareFiles文件夹保存一些二进制形式文件(一些云盘内无法上传的文件、被禁止查看的文件)；
 
 <br/>
-<br/><br/>
+<br/>
+<br/>
 <br/>
 
 个人blog地址：
