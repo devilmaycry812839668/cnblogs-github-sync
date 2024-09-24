@@ -80,11 +80,11 @@ https://cnblogs.com/xyz
 
 <br/><br/>
 
-<img src="./README.assets/weixin_pay.jpg" alt="微信支付" style="zoom: 25%;" />
+<img src="./img/weixin_pay.jpg" alt="微信支付" style="zoom: 25%;" />
 
 <br/><br/>
 
-<img src="./README.assets/ali_pay.jpg" alt="支付宝支付" style="zoom:25%;" />
+<img src="./img/ali_pay.jpg" alt="支付宝支付" style="zoom:25%;" />
 
 <br/><br/>
 <br/>
