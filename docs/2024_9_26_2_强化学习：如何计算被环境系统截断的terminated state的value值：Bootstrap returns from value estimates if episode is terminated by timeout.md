@@ -17,3 +17,14 @@ tags: 杂谈
 Bootstrap returns from value estimates if episode is terminated by timeout. More info here: https://github.com/Denys88/rl_games/issues/128
 
 <br/>
+<br/>
+
+Episodic tasks include a special terminal state
+
+
+<br/>
+<br/>
+
+
+<br/>
+<br/>
