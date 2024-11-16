@@ -130,6 +130,74 @@ visualize_ann_3d(cppn, threshold=0.5, size=10)
 
 <br/>
 
+完整版本代码：
+
+```python
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+class CPPN:
+    def __init__(self, input_size, hidden_layers, output_size):
+        self.layers = [np.random.randn(input_size, hidden_layers[0])]
+        self.layers += [np.random.randn(hidden_layers[i], hidden_layers[i+1]) for i in range(len(hidden_layers) - 1)]
+        self.layers.append(np.random.randn(hidden_layers[-1], output_size))
+
+    def activation(self, x, function='tanh'):
+        if function == 'tanh':
+            return np.tanh(x)
+        elif function == 'sin':
+            return np.sin(x)
+        elif function == 'gaussian':
+            return np.exp(-x**2)
+        else:
+            return x  # linear
+
+    def generate_pattern(self, x, y, activation_function='tanh'):
+        inputs = np.array([x, y])
+        output = inputs
+        for layer in self.layers:
+            output = np.dot(output, layer)
+            output = self.activation(output, activation_function)
+        return output
+
+
+# Create a CPPN
+cppn = CPPN(input_size=2, hidden_layers=[10, 10, 10], output_size=1)
+
+
+
+def visualize_ann_3d(cppn, threshold=0.5, size=10):
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    # Iterate through the grid and plot neurons with output above threshold
+    for i in range(size):
+        for j in range(size):
+            x = i / size * 2 - 1  # Normalize to [-1, 1]
+            y = j / size * 2 - 1  # Normalize to [-1, 1]
+            output = cppn.generate_pattern(x, y)[0]
+            if abs(output) > threshold:
+                # Plot the neuron
+                ax.scatter(x, y, output, color='blue')
+
+    ax.set_xlabel('X Axis')
+    ax.set_ylabel('Y Axis')
+    ax.set_zlabel('Output Axis')
+    plt.title("3D Visualization of ANN based on CPPN Pattern")
+    plt.show()
+
+# Visualize the ANN in 3D based on the CPPN pattern
+visualize_ann_3d(cppn, threshold=0.5, size=10)
+```
+
+
+
+<br/>
+
 In this visualization:
 
 - Each blue dot represents a neuron in the ANN.
